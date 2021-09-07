@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jorgerubira.hiberusmsejercicio01;
+package com.jorgerubira.hiberusmsaagateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
-//@EnableEurekaClient
-@EnableFeignClients
-public class MainEjercicio01 {
-
+@EnableEurekaClient
+public class GatewayMain {
     public static void main(String[] args) {
-        SpringApplication.run(MainEjercicio01.class, args);
+        SpringApplication.run(GatewayMain.class, args);
     }
 }

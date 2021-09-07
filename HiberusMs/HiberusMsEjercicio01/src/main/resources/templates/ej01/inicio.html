@@ -1,0 +1,27 @@
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Titulo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <form action="traducir" method="post">
+                <table>
+                    <tr>
+                        <th>Idioma entrada</th>
+                        <th><select name="source">
+                                <option th:each="i:${idiomas}" th:value="${i.code}" th:text="${i.name}"></option>
+                            </select>
+                        </th>
+                        <th>Idioma salida</th>
+                        <th><select name="target">
+                                <option th:each="e:${idiomas}" th:value="${e.code}" th:text="${e.name}"></option>
+                            </select>
+                        </th>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
