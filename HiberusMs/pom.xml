@@ -9,6 +9,7 @@
         <module>HiberusMsMicroservicio1</module>
         <module>HiberusMsMicroservicio2</module>
         <module>HiberusMsAAEureka</module>
+        <module>HiberusMsEjercicio01</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
