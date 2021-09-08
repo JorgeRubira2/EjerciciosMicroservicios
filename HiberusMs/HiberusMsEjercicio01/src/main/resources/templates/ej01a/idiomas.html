@@ -1,0 +1,52 @@
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Titulo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    </head>
+    <body>
+        <div class="container justify-content-center">
+            <div style="color: red" th:if="${error!=null}" th:text="${error}"></div>
+            <div class="container justify-content-center">
+                <form action="/ejercicio01/traduce" method="post">	
+                    <div class="col-md-6 form-line">
+                        <div class="form-group"> 
+                            <label for ="source">Idioma origen</label>
+                            <select name="source">
+                                <option th:each="id:${idiomas}" th:value="${id.code}" th:text="${id.name}"></option>
+                            </select> </div>
+                        <div class="form-group">
+                            <textarea name="original"  class="form-control" id="original" placeholder="Introduce texto a traducir"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group"> 
+                            <label for ="target"> Idioma destino</label>
+                            <select name="target">
+                                <option th:each="id:${idiomas}" th:value="${id.code}" th:text="${id.name}"></option>
+                            </select> </div>
+                        <div class="form-group">
+                            <th:block th:if="${traducido!=null}">
+                                <textarea readonly class="form-control" id="translated" th:placeholder="${traducido}"></textarea>
+                            </th:block>
+                            <th:block th:if="${traducido==null}">
+                                <textarea readonly class="form-control" id="translated" placeholder="El texto traducido aparecerá aquí"></textarea>
+                            </th:block>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-globe" aria-hidden="true"></i>   Traducir</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.js"></script>
+    </body>
+</html>
