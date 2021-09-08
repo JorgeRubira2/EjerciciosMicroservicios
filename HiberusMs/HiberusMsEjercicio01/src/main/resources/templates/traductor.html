@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Traductor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    </head>
+    <body>
+        <h1>Traductor</h1>
+        <hr>
+        <div class="container">
+            <form action="/ejercicioTraduccion/traducir" method="post">
+                <label for="lenguajeEntrada">Lenguaje entrada</label>
+                <select name="lenguajeEntrada" >
+                    <option th:each="lenE:${lenguajes}" th:value="${lenE.code}" th:selected="${lenguajeEntrada.equals(lenE.code)}"><span th:text="${lenE.name}"/></option>
+                </select>
+
+                <label for="lenguajeSalida">Lenguaje Salida</label>
+                <select name="lenguajeSalida" >
+                    <option th:each="lenE:${lenguajes}" th:value="${lenE.code}" th:selected="${lenguajeSalida.equals(lenE.code)}"><span th:text="${lenE.name}"/></option>
+                </select>
+
+                <div>
+                    <label for="textoEntrada">texto a traducir</label>
+                    <input type="text" name="textoEntrada" placeholder="texto a traducir" th:value="${textoEntrada}"/>
+                </div>
+                <div th:if="${ textoSalida != null }">
+                    <label for="textoSalida">texto traducido</label>
+                    <input type="text" name="textoSalida" placeholder="texto traducido" th:if="${ textoSalida != null }" th:value="${textoSalida.translatedText}"/>
+                </div>
+                <div>
+                    <input type="submit" value="traducir" class="btn btn-dark"/>
+                </div>
+            </form>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" ></script>    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.js"></script>
+</html>

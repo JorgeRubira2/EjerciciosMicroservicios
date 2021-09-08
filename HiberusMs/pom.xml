@@ -10,6 +10,7 @@
         <module>HiberusMsMicroservicio2</module>
         <module>HiberusMsAAEureka</module>
         <module>HiberusMsEjercicio01</module>
+        <module>HiberusMsAAGateway</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -111,8 +112,11 @@
             <artifactId>jersey-apache-client4</artifactId>
             <version>1.19.4</version>
         </dependency>
-                   
-                                         
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>2.4.4</version>
+        </dependency>                      
     </dependencies>
     <build>
         <plugins>
