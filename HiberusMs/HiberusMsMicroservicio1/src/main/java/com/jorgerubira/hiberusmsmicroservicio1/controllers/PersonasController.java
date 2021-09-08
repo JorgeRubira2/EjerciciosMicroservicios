@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/persona")
+//@RestController
+//@RequestMapping("/persona")
 public class PersonasController {
 
     //4 tipos operaciones:
