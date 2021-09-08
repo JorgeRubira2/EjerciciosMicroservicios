@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio1</title>
+</head>
+<body>
+    <div>
+        <form action="traducir" method="post">
+            <select name="source" >
+                <div th:each="idioma:${idiomas}">
+                    <option th:text="${idioma.name}" th:value="${idioma.code}"></option>
+                </div>
+            </select>
+            <textarea name="q"></textarea>
+            <input type="submit" value="Traducir">
+        </form>
+        <div>
+            <p th:text="${traduccion.translatedText}"></p>
+        </div>
+    </div>
+</body>
+</html>
