@@ -18,7 +18,11 @@
                         <th><select name="target">
                                 <option th:each="e:${idiomas}" th:value="${e.code}" th:text="${e.name}"></option>
                             </select>
-                        </th>
+                        </th>                
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="text" name="q"/></td>
+                        <td colspan="2"><input type="text" /></td>
                     </tr>
                 </table>
             </form>
