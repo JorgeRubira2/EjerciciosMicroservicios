@@ -32,6 +32,7 @@ public class Persona {
     private String nombre;
     private String apellidos;
     
+    
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaNacimiento;   //yyyy-MM-dd
     
