@@ -1,0 +1,33 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Aviones</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/united/bootstrap.min.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <p>Operaciones:</p>
+            <p><input type="button" onclick="buscar()" value="Buscar aeropuertos" class="btn btn-secondary"/></p>
+            <p>Aeropuerto:</p>
+            <p><select name="aeropuertos">
+                    <option></option>
+                    <option th:each="air:${aeropuerto}" th:value="${air.airport_name}" th:text="${air.airport_name}"></option>
+                </select></p>
+                <p><select name="aeropuertos">
+                    <option></option>
+                    <option th:each="air:${aeropuerto}" th:value="${air.airport_name}" th:text="${air.country_name}"></option>
+                </select></p>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>   
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function buscar(){
+                window.location.href="/ej01b?pais=Spain";
+            }
+        </script>
+    </body>
+</html>
