@@ -5,12 +5,13 @@
  */
 package com.jorgerubira.hiberusmsejercicio01.feign;
 
-import com.jorgerubira.hiberusmsejercicio01.entity.Aerolinea;
-import com.jorgerubira.hiberusmsejercicio01.entity.Aeropuerto;
-import com.jorgerubira.hiberusmsejercicio01.entity.Vuelo;
+import com.jorgerubira.hiberusmsejercicio01.dto.AerolineaDto;
+import com.jorgerubira.hiberusmsejercicio01.dto.AeropuertoDto;
+import com.jorgerubira.hiberusmsejercicio01.dto.VueloDto;
 import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -22,12 +23,18 @@ public interface AviacionFeign {
     // http://api.aviationstack.com/v1/airports?access_key=8e7e1ac5b34b2ac69236e5456103a8a0&limit=99999
 
     @GetMapping("/airports?access_key="+token)
-    public List<Aerolinea> leerAerolineas();
+    public List<AerolineaDto> leerAerolineas(@RequestParam Integer limit);
     
     @GetMapping("/airports?access_key="+token)
-    public List<Aeropuerto> leerAeropuertos();
+    public List<AeropuertoDto> leerAeropuertos(@RequestParam Integer limit);
     
+    
+    
+    // dep_icao --> codigo de aeropuerto
     @GetMapping("/flights?access_key="+token)
-    public List<Vuelo> leerVuelos();
+    public List<VueloDto> leerVuelos(@RequestParam Integer limit, 
+                                  @RequestParam String flight_date, 
+                                  @RequestParam String airline_name,
+                                  @RequestParam String dep_icao);
     
 }

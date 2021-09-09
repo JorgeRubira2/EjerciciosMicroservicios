@@ -38,10 +38,16 @@ import lombok.NoArgsConstructor;
 public class Aerolinea {
     private String airline_name;
     private String iata_code;
-    private String iata_prefix_accounting;
     private String icao_code;
-    private String callsign;
-    private String type;
+    private String country_name;
+    private String country_iso2;
+    
+    public String airline_name;
+    public String iata_code;
+    public String iata_prefix_accounting;
+    public String icao_code;
+    public String callsign;
+    public String type;
     private String status;
     private String fleet_size;
     private String fleet_average_age;
@@ -49,4 +55,6 @@ public class Aerolinea {
     private String hub_code;
     private String country_name;
     private String country_iso2;
+    
+    
 }

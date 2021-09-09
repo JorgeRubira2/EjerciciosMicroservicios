@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jorgerubira.hiberusmsejercicio01.entity;
+package com.jorgerubira.hiberusmsejercicio01.domain;
 
 /**
  *

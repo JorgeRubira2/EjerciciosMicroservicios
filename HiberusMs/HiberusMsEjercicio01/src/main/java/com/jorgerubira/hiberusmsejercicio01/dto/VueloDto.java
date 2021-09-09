@@ -28,15 +28,22 @@ class Aeropuerto {
 }
 
 class Aerolinea {
-
     private String name;
 }
 
+
+class IdentVuelo {
+    private String number;
+    private String iata;
+    private String icao;
+}
 class Vuelo {
 
-    private List<Aeropuerto> departure;
-    private List<Aeropuerto> arrival;
-    private List<Aerolinea> airline;
+    private Aeropuerto departure;
+    private Aeropuerto arrival;
+    private Aerolinea airline;
+    private IdentVuelo flight;
+
 }
 
 @Data
