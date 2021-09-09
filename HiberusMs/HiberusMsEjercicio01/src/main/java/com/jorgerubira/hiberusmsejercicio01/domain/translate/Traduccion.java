@@ -1,4 +1,4 @@
-package com.jorgerubira.hiberusmsejercicio01.domain;
+package com.jorgerubira.hiberusmsejercicio01.domain.translate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Idioma {
+public class Traduccion {
 
-    private String code;
-    private String name;
+    private String translatedText;
 }

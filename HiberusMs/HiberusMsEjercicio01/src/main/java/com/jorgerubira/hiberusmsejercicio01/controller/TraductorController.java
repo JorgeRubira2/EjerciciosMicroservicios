@@ -1,6 +1,6 @@
 package com.jorgerubira.hiberusmsejercicio01.controller;
 
-import com.jorgerubira.hiberusmsejercicio01.domain.Traduccion;
+import com.jorgerubira.hiberusmsejercicio01.domain.translate.Traduccion;
 import com.jorgerubira.hiberusmsejercicio01.feign.TranslateFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,9 +25,12 @@ public class TraductorController {
     }
 
     @PostMapping("/traducir2")
-    public String traducir(Model model, String q, String source){
+    public String traducir(Model model, String q, String source, String target){
+        if(q.equals("")){
+            return "redirect:traductor";
+        }
         model.addAttribute("idiomas", traductor.leerIdiomas());
-        model.addAttribute("traduccion", traductor.obtenerTraduccion(q, source, "es"));
+        model.addAttribute("traduccion", traductor.obtenerTraduccion(q, source, target));
         return "traductor";
     }
 
