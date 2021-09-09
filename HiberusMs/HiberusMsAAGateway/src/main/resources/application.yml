@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: microservicio1
+        uri: lb://microservicio1
+        predicates:
+        - Path=/ms1/v1/**
+        filters:
+        - StripPrefix=2
+      - id: microservicio2
+        uri: lb://microservicio2
+        predicates:
+        - Path=/ms2/v1/**
+        filters:
+        - StripPrefix=2
+
+
+
