@@ -7,7 +7,10 @@ package com.jorgerubira.hiberusmsmicroservicio1.controllers;
 
 import com.jorgerubira.hiberusmsmicroservicio1.entities.Usuario;
 import com.jorgerubira.hiberusmsmicroservicio1.repositories.UsuarioRepository;
+import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -62,6 +65,17 @@ public class SeguridadControlador {
         return "redirect:/altaUsuario";
     }    
 
+    @GetMapping("/info")
+    @ResponseBody
+    public String info(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        
+        final StringBuffer res=new StringBuffer();
+        authentication.getAuthorities().forEach(x->{
+           res.append("," + x.getAuthority());
+        });
+        return authentication.getName() + res.toString();
+    }
     
 
 }
