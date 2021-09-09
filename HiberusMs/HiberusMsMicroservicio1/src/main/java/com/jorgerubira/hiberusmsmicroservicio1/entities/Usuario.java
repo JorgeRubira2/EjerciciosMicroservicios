@@ -6,6 +6,7 @@
 package com.jorgerubira.hiberusmsmicroservicio1.entities;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,8 @@ public class Usuario {
     private String nombre;
     private String password;
     
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+    
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Rol> roles;
     
 }

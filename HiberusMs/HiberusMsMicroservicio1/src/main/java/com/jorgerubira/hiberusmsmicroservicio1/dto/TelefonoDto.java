@@ -5,6 +5,7 @@
  */
 package com.jorgerubira.hiberusmsmicroservicio1.dto;
 
+import java.text.SimpleDateFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,5 +14,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TelefonoDto {
-    private String numero;  
+    private String numero;
 }
