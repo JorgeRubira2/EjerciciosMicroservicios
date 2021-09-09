@@ -14,14 +14,15 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.core.GrantedAuthorityDefaults;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class ValidacionService implements UserDetailsService{
 
     @Autowired
@@ -29,7 +30,6 @@ public class ValidacionService implements UserDetailsService{
     
     @Autowired
     private ModelMapper mapper;
-    
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -40,11 +40,11 @@ public class ValidacionService implements UserDetailsService{
             UsuarioDto obj=new UsuarioDto();
             obj.setNombre(usuario.get().getNombre());
             obj.setPassword(usuario.get().getPassword());
-            List<RolDto> roles=usuario.get().getRoles()
-                                      .stream()
-                                      .map(x->new RolDto(x.getNombre()))
+            List<SimpleGrantedAuthority> roles=usuario.get().getRoles()
+                                      .stream() 
+                                      .map(x->new SimpleGrantedAuthority("ROLE_" + x.getNombre()))
                                       .collect(Collectors.toList());
-            obj.setRoles(roles);
+            obj.setRoles(roles);   
             return obj;
         }else{
             throw new UsernameNotFoundException("Usuario/Password incorrecto");

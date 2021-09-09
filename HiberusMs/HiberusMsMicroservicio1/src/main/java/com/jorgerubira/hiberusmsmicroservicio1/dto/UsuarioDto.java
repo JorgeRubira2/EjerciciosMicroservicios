@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Data
@@ -20,11 +21,11 @@ public class UsuarioDto implements UserDetails {
 
     private String nombre;
     private String password;
-    private List<RolDto> roles;
+    private List<SimpleGrantedAuthority> roles;
     
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
+        return roles; 
     }
 
     @Override
