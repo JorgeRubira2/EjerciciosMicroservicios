@@ -15,6 +15,9 @@ import lombok.NoArgsConstructor;
  *
  * @author janus
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 class Aeropuerto {
 
     private String airport;
@@ -26,17 +29,24 @@ class Aeropuerto {
     private String delay;
     private String scheduled;
 }
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 class Aerolinea {
     private String name;
 }
 
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 class IdentVuelo {
     private String number;
     private String iata;
     private String icao;
 }
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 class Vuelo {
 
     private Aeropuerto departure;

@@ -5,6 +5,11 @@
  */
 package com.jorgerubira.hiberusmsejercicio01.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,26 +40,37 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name="aerolineas")
 public class Aerolinea {
-    private String airline_name;
-    private String iata_code;
-    private String icao_code;
-    private String country_name;
-    private String country_iso2;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String airlineName;
+    private String iataCode;
+    private String icaoCode;
+    private String countryName;
+    private String countryIso2;
     
-    public String airline_name;
-    public String iata_code;
-    public String iata_prefix_accounting;
-    public String icao_code;
-    public String callsign;
-    public String type;
-    private String status;
-    private String fleet_size;
-    private String fleet_average_age;
-    private String date_founded;
-    private String hub_code;
-    private String country_name;
-    private String country_iso2;
+    public void setAirline_name(String val){
+        airlineName = val;
+    }
     
+    public void setIata_code(String val){
+        iataCode = val;
+    }
+
+    public void setIcao_code(String val){
+        icaoCode = val;
+    }
     
+    public void setCountry_name(String val){
+        countryName = val;
+    }
+    
+    public void setCountry_iso2(String val){
+        countryIso2 = val;
+    }
+    
+        
 }

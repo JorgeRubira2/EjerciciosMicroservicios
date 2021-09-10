@@ -16,7 +16,6 @@ import com.jorgerubira.hiberusmsejercicio01.feign.AviacionFeign;
 import com.jorgerubira.hiberusmsejercicio01.repositoy.AerolineaRepository;
 import com.jorgerubira.hiberusmsejercicio01.repositoy.AeropuertoRepository;
 import com.jorgerubira.hiberusmsejercicio01.repositoy.ReservaRepository;
-import com.jorgerubira.hiberusmsejercicio01.repositoy.VueloRepository;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,9 +37,6 @@ public class AviacionService {
     
     @Autowired
     private AeropuertoRepository repoAeropuerto;
-    
-    @Autowired
-    private VueloRepository repoVuelo;
     
     @Autowired
     private ReservaRepository repoReserva;
