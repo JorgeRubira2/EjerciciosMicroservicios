@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <a href="/ejercicio1b/importarDatos">Importar maestros</a>
+            <form>
+                <select>
+                    <option th:each="aeropuerto:${aeropuertos}" th:value="${aeropuerto.iataCode}" th:text="${aeropuerto.airportName}"></option>
+                </select>
+                <select>
+                    <option th:each="aerolinea:${aerolineas}" th:value="${aerolinea.iataCode}" th:text="${aerolinea.airlineName}"></option>
+                </select>
+                <input type="submit" value="Consultar">
+            </form>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                </tr>
+                <tr th:each="flight:${vuelos}">
+                    <td th:text="${flight.flightDate}"></td>
+                    <td th:text="${flight.departure.airport}"></td>
+                    <td th:text="${flight.arrival.airport}"></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

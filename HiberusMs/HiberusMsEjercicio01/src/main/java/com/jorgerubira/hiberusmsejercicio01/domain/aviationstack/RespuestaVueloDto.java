@@ -5,7 +5,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class FlightResponse {
-    private Pagination pagination;
-    private List<Flight> data;
+public class RespuestaVueloDto {
+    private List<VueloDto> data;
 }

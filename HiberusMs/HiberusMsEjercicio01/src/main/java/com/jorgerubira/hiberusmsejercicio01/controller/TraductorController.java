@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/ejercicio1")
+@RequestMapping("/ejercicio1a")
 public class TraductorController {
 
     @Autowired

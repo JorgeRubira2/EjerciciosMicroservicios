@@ -1,15 +1,14 @@
 package com.jorgerubira.hiberusmsejercicio01.controller;
 
-import com.jorgerubira.hiberusmsejercicio01.domain.aviationstack.Airport;
 import com.jorgerubira.hiberusmsejercicio01.feign.VuelosFeign;
 import com.jorgerubira.hiberusmsejercicio01.interfaces.IVuelosService;
+import com.jorgerubira.hiberusmsejercicio01.repository.AirlineRepository;
+import com.jorgerubira.hiberusmsejercicio01.repository.AirportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/ejercicio1b")
@@ -21,15 +20,29 @@ public class VuelosController {
     @Autowired
     IVuelosService servicio;
 
+    @Autowired
+    AirportRepository airportRepository;
+
+    @Autowired
+    AirlineRepository airlineRepository;
+
     @GetMapping("/inicio")
-    public String inicio(){
+    public String inicio(Model model){
+        model.addAttribute("aeropuertos", airportRepository.findAll());
+        model.addAttribute("aerolineas", airlineRepository.findAll());
         return "ej1b/inicio";
     }
 
-    @GetMapping("/verAeropuertos")
-    @ResponseBody
-    public List<Airport> verAeropuertos(){
-        return servicio.filtrarAeropuertos(feign.verAeropuertos("8e7e1ac5b34b2ac69236e5456103a8a0", 99999).getData());
+    @GetMapping("/importarDatos")
+    public String importarDatos(Model model){
+        servicio.importarMaestros();
+        return "redirect:inicio";
     }
 
+    @GetMapping("/verInicio")
+    public String verVuelos(Model model){
+        model.addAttribute("vuelos", servicio.verVuelosEspaña());
+//        model.addAttribute("aeropuertos", servicio.verVuelosEspaña());
+        return "/ej1b/inicio";
+    }
 }
