@@ -7,8 +7,10 @@ package com.jorgerubira.hiberusmsejercicio01;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
+@EnableFeignClients
 public class MainEjercicio01 {
 
     public static void main(String[] args) {
