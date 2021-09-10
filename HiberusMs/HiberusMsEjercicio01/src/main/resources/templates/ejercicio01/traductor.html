@@ -1,0 +1,27 @@
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Traductor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <form  action="traducir" method="post" th:object="${idioma}">
+            <select class="form-control">
+                <option selected>Selecciona Idioma de entrada</option>
+                <option th:each="idioma : ${idiomas}" th:value="${idioma.code}" th:text="${idioma.name}"></option>
+            </select>
+            <select class="form-control">
+                <option selected>Selecciona Idioma a traducir</option>
+                <option th:each="idioma : ${idiomas}" th:value="${idioma.code}" th:text="${idioma.name}"></option>
+            </select>
+                
+                <button class="btn btn-primary" type="submit">  Traducir </button>
+                <textarea class="form-control" id="" rows="3"></textarea>
+            </form>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" ></script>    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+    </body>
+</html>

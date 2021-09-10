@@ -18,9 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("/ejercicio01")
 public class IdiomasControler {
     
     @Autowired
@@ -32,28 +34,16 @@ public class IdiomasControler {
     @Autowired
     private ModelMapper mapper;
     
-    @GetMapping("/obtenerIdiomas")
-    public String listaIdiomas(Model m){
+    @GetMapping("/traductor")
+    public String traductor(Model m){
         m.addAttribute("idiomas", traductor.leerLenguajes());
-        return "verIdiomas";
+        return "ejercicio01/traductor";
     }
     
     @GetMapping("/prueba")
     @ResponseBody
     public TraduccionDto prueba(Model m){ 
         return traductor.traducirLenguajes("Hello", "en", "es", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx");
-    }    
-    
-    @GetMapping("/prueba2")
-    @ResponseBody
-    public AirportsDto prueba2(){ 
-        return vuelos.leer("8e7e1ac5b34b2ac69236e5456103a8a0", 10);
-    }    
-
-    @GetMapping("/prueba3")
-    @ResponseBody
-    public AirportsDto prueba3(){ 
-        return vuelos.leer("8e7e1ac5b34b2ac69236e5456103a8a0", 10); 
-    }    
+    }      
     
 }
