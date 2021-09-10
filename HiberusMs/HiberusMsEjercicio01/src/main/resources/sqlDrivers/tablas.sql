@@ -37,25 +37,25 @@ create table reservas (
 
 create table aeropuertos(
  id int primary key AUTO_INCREMENT,
-    airportName Varchar(100),
-    iataCode Varchar(100),
-    icaoCode Varchar(100),
+    airport_name Varchar(100),
+    iata_code Varchar(100),
+    icao_code Varchar(100),
     latitude Varchar(100),
     longitude  Varchar(100),
-    geonameId  Varchar(100),
-    phoneNumber Varchar(100),
-    countryName  Varchar(100),
-    countryIso2  Varchar(100),
-    cityIataCode  Varchar(100)
+    geoname_id  Varchar(100),
+    phone_number Varchar(100),
+    country_name  Varchar(100),
+    country_iso2  Varchar(100),
+    city_iata_code  Varchar(100)
 
 );
 
 
 create table aerolineas(
     id int primary key AUTO_INCREMENT,
-    airlineName Varchar(100),
-    iataCode Varchar(100),
-    icaoCode Varchar(100),
-    countryName Varchar(100),
-    countryIso2 Varchar(100) 
+    airline_name Varchar(100),
+    iata_code Varchar(100),
+    icao_code Varchar(100),
+    country_name Varchar(100),
+    country_iso2 Varchar(100) 
     );

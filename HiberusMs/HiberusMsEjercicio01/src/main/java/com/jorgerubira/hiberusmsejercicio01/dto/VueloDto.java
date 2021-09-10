@@ -5,7 +5,6 @@
  */
 package com.jorgerubira.hiberusmsejercicio01.dto;
 
-
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,10 +28,12 @@ class Aeropuerto {
     private String delay;
     private String scheduled;
 }
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 class Aerolinea {
+
     private String name;
 }
 
@@ -40,10 +41,12 @@ class Aerolinea {
 @NoArgsConstructor
 @AllArgsConstructor
 class IdentVuelo {
+
     private String number;
     private String iata;
     private String icao;
 }
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -61,6 +64,15 @@ class Vuelo {
 @AllArgsConstructor
 public class VueloDto {
 
+    private String flightDate;
+    private String flightStatus;
     private List<Vuelo> data;
 
+    public void setFlight_date(String val) {
+        flightDate = val;
+    }
+
+    public void setFlight_status(String val) {
+        flightStatus = val;
+    }
 }

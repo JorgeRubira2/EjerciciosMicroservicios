@@ -11,7 +11,6 @@ import com.jorgerubira.hiberusmsejercicio01.dto.VueloDto;
 import com.jorgerubira.hiberusmsejercicio01.entity.Aerolinea;
 import com.jorgerubira.hiberusmsejercicio01.entity.Aeropuerto;
 import com.jorgerubira.hiberusmsejercicio01.entity.Reserva;
-import com.jorgerubira.hiberusmsejercicio01.domain.Vuelo;
 import com.jorgerubira.hiberusmsejercicio01.feign.AviacionFeign;
 import com.jorgerubira.hiberusmsejercicio01.repositoy.AerolineaRepository;
 import com.jorgerubira.hiberusmsejercicio01.repositoy.AeropuertoRepository;
@@ -31,6 +30,8 @@ import org.springframework.stereotype.Service;
 public class AviacionService {
     
     private static Integer LIMITE = 99999;
+    
+    private static String TOKEN="2573fdb7973e63abcf701430bdd7f1a9";
     
     @Autowired 
     private AerolineaRepository repoAerolinea;
@@ -60,22 +61,22 @@ public class AviacionService {
     
     public void cargarDatosAero(){
         // mapear a BBDD 
-        List<AerolineaDto> aerolineas = feignAviacion.leerAerolineas(LIMITE);
+        List<AerolineaDto> aerolineas = feignAviacion.leerAerolineas(TOKEN,LIMITE);
         aerolineas.parallelStream()
                 .map(x-> mapeador.map(x,Aerolinea.class))
                 .forEach(x-> repoAerolinea.save(x));
                 
-        List<AeropuertoDto> aeropuertos = feignAviacion.leerAeropuertos(LIMITE);
+        List<AeropuertoDto> aeropuertos = feignAviacion.leerAeropuertos(TOKEN,LIMITE);
         aeropuertos.parallelStream()
                 .map(x-> mapeador.map(x,Aeropuerto.class))
                 .forEach(x-> repoAeropuerto.save(x));
     }
     
 
-    public List<Vuelo> consultaVuelos(String flightDate, String airlineName,String depIcao){
-        List<VueloDto> vuelos = feignAviacion.leerVuelos(LIMITE, flightDate, airlineName, depIcao);
+    public List<VueloDto> consultaVuelos(String flightDate, String airlineName, String depIcao){
+        List<VueloDto> vuelos = feignAviacion.leerVuelos(TOKEN,LIMITE, flightDate, airlineName, depIcao);
         return vuelos.parallelStream()
-                        .map(x-> mapeador.map(x, Vuelo.class))
+                        .map(x-> mapeador.map(x, VueloDto.class))
                         .collect(Collectors.toList());
     }
 }

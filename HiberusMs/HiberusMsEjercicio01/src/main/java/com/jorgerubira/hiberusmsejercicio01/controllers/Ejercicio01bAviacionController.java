@@ -28,8 +28,7 @@ public class Ejercicio01bAviacionController {
     @GetMapping("/reservas")
     public String reservaciones(Model m, String fechaSalida, String nombreAerolinea,String codigoAeropuerto){
         
-        m.addAttribute("listaVuelos", serviceReserva.consultaVuelos(fechaSalida, nombreAerolinea, codigoAeropuerto));
-        
+       
         m.addAttribute("listaAerolineas", serviceReserva.consultaAerolineas());
         m.addAttribute("listaAeropuertos",serviceReserva.consultaAeropuertos() );
         m.addAttribute("listaVuelos", serviceReserva.consultaVuelos(fechaSalida, nombreAerolinea, codigoAeropuerto));
