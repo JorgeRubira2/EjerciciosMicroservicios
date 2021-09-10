@@ -1,0 +1,74 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Aviones</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/united/bootstrap.min.css"/>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <a href='/ej01b/aeropuertos' class='btn btn-primary'>Seleccionar otro aeropuert</a>
+            <p>Operaciones:</p>
+
+            <p>Aeropuerto:</p>
+            <h1 th:text="${aeropuerto}"></h1>
+            <form action="/ej01b/comprar" method="post">
+                <input type="submit" id="compar" value="Comprar" class="btn btn-primary"/>
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Sel.</th>
+                            <th rowspan="2">Fecha</th>
+                            <th rowspan="2">Estado</th>
+                            <th colspan="2">Salida</th>
+                            <th colspan="2">Llegada</th>
+                            <th rowspan="2">Aerolínea</th>
+                            <th rowspan="2">Nº vuelo</th>
+                        </tr>
+                        <tr>
+                            <th>Aeropuerto</th>
+                            <th>Programado</th>
+                            <th>Aeropuerto</th>
+                            <th>Programado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr th:each="vd:${vuelosDatos}">
+                            <td><input type="radio" name="seleccionar" th:value="${vd.flight.number}"/></td>
+                            <td><input type="date" name="fecha" th:value="${#dates.format(vd.flightDate, 'yyyy-MM-dd')}" th:class="${vd.flight.number}" disabled/></td>
+                            <td><input type="text" name="estado" th:value="${vd.flightStatus}" th:class="${vd.flight.number}" disabled/></td>                        
+                            <td><input type="text" name="salidaAeropuerto" th:value="${vd.departure.airport}" th:class="${vd.flight.number}" disabled/></td>
+                            <td><input type="text" name="salidaFecha" th:value="${vd.departure.scheduled}"  th:class="${vd.flight.number}" disabled/></td>
+                            <td><input type="text" name="llegadaAeropuerto" th:value="${vd.arrival.airport}" th:class="${vd.flight.number}" disabled/></td>
+                            <td><input type="text" name="llegadaFecha" th:value="${vd.arrival.scheduled}" th:class="${vd.flight.number}" disabled/></td>
+                            <td><input type="text" name="aerolinea" th:value="${vd.airline.name}" th:class="${vd.flight.number}" disabled/></td>
+                            <td><input type="text" name="nVuelo" th:value="${vd.flight.number}" th:class="${vd.flight.number}" disabled/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>     
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>   
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("input[name='seleccionar']").change(comprar);
+            });
+            function comprar() {
+                var clase = $(this).val();
+                $("input[type='text']").attr("disabled","disabled");
+                $("input[type='date']").attr("disabled","disabled");
+                if (clase != null) {
+                    $("." + clase).removeAttr("disabled").attr("readonly", "readonly");
+                    $("#comprar").click();
+
+                }
+
+            }
+        </script>
+    </body>
+</html>

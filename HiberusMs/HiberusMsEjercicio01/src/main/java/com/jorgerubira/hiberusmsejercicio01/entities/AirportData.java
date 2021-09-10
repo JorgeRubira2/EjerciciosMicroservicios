@@ -22,11 +22,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="airport_data")
+@Table(name="airpor_data")
 public class AirportData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
  
     private String airportName;
     private String iataCode;
@@ -37,6 +37,26 @@ public class AirportData {
     
     public void setAirport_name(String valor){
         airportName=valor;
+    }
+    
+    public void setIata_code(String valor){
+        iataCode=valor;
+    }
+    
+    public void setIcao_code(String valor){
+        icaoCode=valor;
+    }
+    
+    public void setCountry_name(String valor){
+        countryName=valor;
+    }
+    
+    public void setCountry_iso2(String valor){
+        countryIso2=valor;
+    }
+    
+    public void setCity_iata_code(String valor){
+        cityIataCode=valor;
     }
     
     

@@ -5,15 +5,21 @@
  */
 package com.jorgerubira.hiberusmsejercicio01.domain;
 
-import com.jorgerubira.hiberusmsejercicio01.entities.AirportData;
-import java.util.List;
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Airport {
-    private List<AirportData> data;
+public class DepartureArrival { 
+    
+    private String airport;
+    private String iata;
+    private String icao;
+    private Date scheduled;
+    
+    
 }

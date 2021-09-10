@@ -5,8 +5,6 @@
  */
 package com.jorgerubira.hiberusmsejercicio01.domain;
 
-import com.jorgerubira.hiberusmsejercicio01.entities.AirportData;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +12,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Airport {
-    private List<AirportData> data;
+public class FlightDetails {
+    private String number;
+    private String iata;
+    private String icao; 
+    
+    
 }
