@@ -2,64 +2,79 @@
 <html xmlns:th="http://www.thymeleaf.org"
       th:fragment="/ej01b/plantilla::reemplazo( ~{::body} ,  ~::{misestilos} , ~{::misscripts} ) ">
     <head>
-        <title>TODO supply a title</title>
+        <title>Sistema de Reservas</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <misestilos>
-        
+
     </misestilos>
-    
+
     <body>
         <div class="container">
-        <div id="selector">
-            <form method ="post" action="/ejercicio01b/traerAviacionAerolinea">
-                <input type="submit" value="Importar Aerolineas"/>
-            </form>
-            <form action="post" action="">
+            <div id="selector">
+                <form method ="post" action="/ejercicio01b/traerAeropuetoAerolinea">
+                    <input type="submit" value="Importar Aerolineas"/>
+                </form>
+                <form method="post" action="">
 
-                <input type="date" name="fechaSalida">
-                <select name="aeropuerto">
-                    <option th:each="aeropuerto:${listaAerolineas}" th:value="${aeropuerto.id}"><span th:text="${aeropuerto.airportName}"/></option>
-                </select>
-                
-                <select name="aerolinea">
-                    <option th:each="aerolinea:${listaAerolineas}" th:value="${aerolinea.id}"><span th:text="${aerolinea.airlineName}"/></option>
-                </select>
-            </form>
-        </div>
-        
-        <!-- consulta y eliminacion de reservas -->
-        <div id="reservas">
-            <form method="post">
-                <div th:each="reserva:${listaReservas}">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <!---->
-                                <input type="submit" value="Eliminar Reserva" formaction="/ejercicio01b/eliminarReserva"/>
-                                
+                    <input type="date" name="fechaSalida">
+                    <div th:if="${listaAeropuertos != null}">
+                        <label for="aeropuerto">Aeropuertos</label>
+                        <select name="aeropuerto">
+                            <option th:each="aeropuerto:${listaAeropuertos}" th:value="${aeropuerto.id}"><span th:text="${aeropuerto.airportName}"/></option>
+                        </select>
+                    </div>
+                    <div th:if="${listaAerolineas != null}">
+                       <label for="aerolinea">Aerolineas</label>
+                        <select name="aerolinea">
+                            <option th:each="aerolinea:${listaAerolineas}" th:value="${aerolinea.id}"><span th:text="${aerolinea.airlineName}"/></option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <!-- consulta y eliminacion de reservas -->
+            <div id="reservas">
+                <form method="post">
+                    <div th:each="reserva:${listaReservas}">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <!---->
+                                    <input type="submit" value="Eliminar Reserva" formaction="/ejercicio01b/eliminarReserva"/>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
             </div>
         </div>
-        
+
         <!-- vuelos existentes compra de billetes--> 
         <div id="vuelos">
             <form method="post">
-                <input type="submit" value="Comprar Billete" formaction="/ejercicio01b/crearReserva"/>
+                <div th:if="${listaVuelos != null}">
+                    <table>
+                    <div th:each="vuelo:${listaVuelos}">
+                        <tr> 
+                            <td><input type="text" th:text="vuelo.getData().flightDate"/></td>
+                            <td><input type="text" th:text="vuelo.getData().getDeparture().airport"/></td>
+                            <td><input type="submit" value="Comprar Billete" formaction="/ejercicio01b/crearReserva"/></td>
+                    </tr>
+                    </div>
+                    </table>
+                </div>
             </form>
         </div>
-        
 
-        
-        </div>
-    </body>
-    
-    <misscripts>
-        
-    </misscripts>
+
+
+    </div>
+</body>
+
+<misscripts>
+
+</misscripts>
 </html>

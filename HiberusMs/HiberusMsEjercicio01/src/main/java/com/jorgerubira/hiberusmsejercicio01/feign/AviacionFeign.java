@@ -22,17 +22,17 @@ public interface AviacionFeign {
     
     // http://api.aviationstack.com/v1/airports?access_key=8e7e1ac5b34b2ac69236e5456103a8a0&limit=99999
 
-    @GetMapping("/airports")
-    public List<AerolineaDto> leerAerolineas(@RequestParam String access_key, @RequestParam Integer limit);
+    @GetMapping("/airlines")
+    public AerolineaDto leerAerolineas(@RequestParam String access_key, @RequestParam Integer limit);
     
     @GetMapping("/airports")
-    public List<AeropuertoDto> leerAeropuertos(@RequestParam String access_key, @RequestParam Integer limit);
+    public AeropuertoDto leerAeropuertos(@RequestParam String access_key, @RequestParam Integer limit);
     
     
     
     // dep_icao --> codigo de aeropuerto
     @GetMapping("/flights")
-    public List<VueloDto> leerVuelos( @RequestParam String access_key,
+    public VueloDto leerVuelos( @RequestParam String access_key,
                                   @RequestParam Integer limit, 
                                   @RequestParam String flight_date, 
                                   @RequestParam String airline_name,

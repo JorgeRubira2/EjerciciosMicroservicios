@@ -16,23 +16,23 @@ create table reservas (
     
     cantidad int,
 
-    airportDep Varchar(100),
-    timezoneDep Varchar(100),
-    iataDep Varchar(100),
-    icaoDep Varchar(100),
-    terminalDep Varchar(100),
-    gateDep Varchar(100),
-    delayDep Varchar(100),
-    scheduledDep Varchar(100),
+    airport_dep Varchar(100),
+    timezone_dep Varchar(100),
+    iata_dep Varchar(100),
+    icao_dep Varchar(100),
+    terminal_dep Varchar(100),
+    gate_dep Varchar(100),
+    delay_dep Varchar(100),
+    scheduled_dep Varchar(100),
     
-    airportArr Varchar(100),
-    timezoneArr Varchar(100),
-    iataArr Varchar(100),
-    icaoArr Varchar(100),
-    terminalArr Varchar(100),
-    gateArr Varchar(100),
-    delayArr Varchar(100),
-    scheduledArr Varchar(100)
+    airport_arr Varchar(100),
+    timezone_arr Varchar(100),
+    iata_arr Varchar(100),
+    icao_arr Varchar(100),
+    terminal_arr Varchar(100),
+    gate_arr Varchar(100),
+    delay_arr Varchar(100),
+    scheduled_arr Varchar(100)
 );
 
 create table aeropuertos(

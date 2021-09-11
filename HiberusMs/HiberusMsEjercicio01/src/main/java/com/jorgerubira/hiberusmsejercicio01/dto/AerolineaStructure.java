@@ -5,7 +5,6 @@
  */
 package com.jorgerubira.hiberusmsejercicio01.dto;
 
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,10 +13,10 @@ import lombok.NoArgsConstructor;
  *
  * @author janus
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class VueloDto {
-    private List<VuelosStructure> data;
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class AerolineaStructure {
 
-}
+        private String name;
+    }

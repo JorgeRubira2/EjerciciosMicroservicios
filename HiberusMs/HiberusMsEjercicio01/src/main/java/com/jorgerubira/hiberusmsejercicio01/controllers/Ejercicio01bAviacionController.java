@@ -32,6 +32,7 @@ public class Ejercicio01bAviacionController {
         m.addAttribute("listaAerolineas", serviceReserva.consultaAerolineas());
         m.addAttribute("listaAeropuertos",serviceReserva.consultaAeropuertos() );
         m.addAttribute("listaVuelos", serviceReserva.consultaVuelos(fechaSalida, nombreAerolinea, codigoAeropuerto));
+        
         m.addAttribute("listaReservas", serviceReserva.consultaReservas());
         return "ej01b/reservas";
     }
