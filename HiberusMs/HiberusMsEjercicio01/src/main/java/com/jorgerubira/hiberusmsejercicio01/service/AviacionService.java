@@ -8,6 +8,7 @@ package com.jorgerubira.hiberusmsejercicio01.service;
 import com.jorgerubira.hiberusmsejercicio01.dto.AerolineaDto;
 import com.jorgerubira.hiberusmsejercicio01.dto.AeropuertoDto;
 import com.jorgerubira.hiberusmsejercicio01.dto.VueloDto;
+import com.jorgerubira.hiberusmsejercicio01.dto.VuelosStructure;
 import com.jorgerubira.hiberusmsejercicio01.entity.Aerolinea;
 import com.jorgerubira.hiberusmsejercicio01.entity.Aeropuerto;
 import com.jorgerubira.hiberusmsejercicio01.entity.Reserva;
@@ -80,10 +81,10 @@ public class AviacionService {
     }
     
 
-    public List<VueloDto> consultaVuelos(String flightDate, String airlineName, String depIcao){
+    public List<VuelosStructure> consultaVuelos(String flightDate, String airlineName, String depIcao){
         VueloDto vuelos = feignAviacion.leerVuelos(TOKEN,LIMITE, flightDate, airlineName, depIcao);
         return vuelos.getData().parallelStream()
-                        .map(x-> mapeador.map(x, VueloDto.class))
+                        .map(x-> mapeador.map(x, VuelosStructure.class))
                         .collect(Collectors.toList());
     }
 }

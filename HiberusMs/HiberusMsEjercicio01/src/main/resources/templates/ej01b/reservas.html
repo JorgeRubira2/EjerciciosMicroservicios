@@ -26,7 +26,7 @@
                         </select>
                     </div>
                     <div th:if="${listaAerolineas != null}">
-                       <label for="aerolinea">Aerolineas</label>
+                        <label for="aerolinea">Aerolineas</label>
                         <select name="aerolinea">
                             <option th:each="aerolinea:${listaAerolineas}" th:value="${aerolinea.id}"><span th:text="${aerolinea.airlineName}"/></option>
                         </select>
@@ -57,13 +57,13 @@
             <form method="post">
                 <div th:if="${listaVuelos != null}">
                     <table>
-                    <div th:each="vuelo:${listaVuelos}">
-                        <tr> 
-                            <td><input type="text" th:text="vuelo.getData().flightDate"/></td>
-                            <td><input type="text" th:text="vuelo.getData().getDeparture().airport"/></td>
-                            <td><input type="submit" value="Comprar Billete" formaction="/ejercicio01b/crearReserva"/></td>
-                    </tr>
-                    </div>
+                        <div th:each="vuelo:${listaVuelos}">
+                            <tr> 
+                                <td><span th:text="${vuelo.getFlightDate()}"></span> <input type="hidden" th:value="${vuelo.getFlightDate()}"/></td>
+                                <td><span th:text="${vuelo.departure.airport}"></span> <input type="hidden" th:value="${vuelo.departure.airport}"/></td> 
+                                <td><input type="submit" value="Comprar Billete" formaction="/ejercicio01b/crearReserva"/></td>
+                            </tr>
+                        </div>
                     </table>
                 </div>
             </form>
